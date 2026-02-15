@@ -15,6 +15,7 @@ public class NodeServer {
 
     public void addToTree(Node node){
         tree.addChild(node);
+        
     }
 
     public void removeFromTree(Node node){

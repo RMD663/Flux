@@ -1,55 +1,26 @@
 public class Main {
     public static void main(String[] args) throws Exception {
 
-        RenderFrame rf = new RenderFrame("Main", 1280, 720);
-
+        CoreRender cRender = new CoreRender("main", 1280, 720);
         NodeServer ns = new NodeServer();
-
         Node root =  new Node();
         
-        Node child1 = new Node();
-        Node child2 = new Node();
-        Node child3 = new Node();
-        
-        Node sub_child1 = new Node();
-        Node sub_child2 = new Node();
-        Node sub_child3 = new Node();
+        TranslationNode trs = new TranslationNode(new Vector2());
 
-        Node deep_sub_child1 = new Node();
-        Node deep_sub_child2 = new Node();
-        Node deep_sub_child3 = new Node();
-
-
-        Node deep_sub_sub_child1 = new Node();
-        Node deep_sub_sub_child2 = new Node();
-        Node deep_sub_sub_child3 = new Node();
-
-        root.addChild(child1);
-        root.addChild(child2);
-        root.addChild(child3);
-
-        child1.addChild(sub_child1);
-        child2.addChild(sub_child2);
-        child3.addChild(sub_child3);
-
-        sub_child1.addChild(deep_sub_child1);
-        sub_child2.addChild(deep_sub_child2);
-        sub_child3.addChild(deep_sub_child3);
-
-        deep_sub_child1.addChild(deep_sub_sub_child1);
-        deep_sub_child2.addChild(deep_sub_sub_child2);
-        deep_sub_child3.addChild(deep_sub_sub_child3);
+        root.addChild(trs);
 
         ns.addToTree(root);
 
-        Rect sqr = new Rect(100, 100, 20, 20);
-        rf.rp.addShape(sqr);
-
+        RectNode sqr = new RectNode(new Vector2(100, 100), new Vector2(20, 20));
+        Rect sqr2 = new Rect(100, 100, 100, 100);
+        root.addChild(sqr);
+        cRender.addDrawableNode(sqr);
+        
         while (true) {
-            sqr.position.x += 1;
             ns.processTree();
-            rf.rp.repaint();
+            cRender.draw();            
             Thread.sleep(16);
+            cRender.clear();
         }
 
 

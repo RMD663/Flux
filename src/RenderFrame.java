@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 public class RenderFrame extends JFrame{
 
-    RenderPanel rp = new  RenderPanel();
+    private final RenderPanel rp = new  RenderPanel();
 
     RenderFrame(String win_title, int width, int height){
         rp.setPreferredSize(new Dimension(width, height));
@@ -16,6 +16,9 @@ public class RenderFrame extends JFrame{
         this.setVisible(true);        
     }   
 
+    public RenderPanel getRenderPanel(){
+        return rp;
+    }
 
     
 }

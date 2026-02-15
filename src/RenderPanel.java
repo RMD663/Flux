@@ -6,9 +6,9 @@ import java.awt.Graphics2D;
 import java.awt.event.*;
 import java.util.Vector;
 
-public class RenderPanel extends JPanel implements ActionListener {
+public class RenderPanel extends JPanel  {
 
-    Vector<Shape> shapes = new Vector<>();
+    Vector<Node> nodes = new Vector<>();
 
     RenderPanel() {
     }
@@ -22,7 +22,6 @@ public class RenderPanel extends JPanel implements ActionListener {
 
     }
 
-
     public void paintComponent(Graphics g){
         Graphics2D g2D = (Graphics2D) g;
         super.paintComponent(g2D);
@@ -30,17 +29,17 @@ public class RenderPanel extends JPanel implements ActionListener {
     }
 
     public void draw(Graphics2D g){
-        for (Shape s : shapes) {
-            s.draw(g);
+        for (Node n : nodes) {
+            n._draw(g);
         }
     }
 
-    public void addShape(Shape s){
-        shapes.add(s);
+    public void addNode(Node n){
+        nodes.add(n);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent event) {
-
+    public void removeNode(Node n){
+        nodes.remove(n);
     }
+
 }

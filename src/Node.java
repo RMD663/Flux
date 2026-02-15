@@ -1,11 +1,16 @@
+import java.awt.Graphics2D;
 import java.util.Vector;
 
 public class Node {
     Vector<Node> children = new Vector<>();
     String id;
     private boolean isActive = true;
+    private boolean isDrawable = false;
+    public Node owner;
+    enum NodeType {NODE, TRANSLATION, SPRITE}
+    public NodeType type; 
     
-    Node() {
+    Node(){
     }
 
     public final void _process(){
@@ -18,11 +23,19 @@ public class Node {
         }
 
     }
+
+    public void _draw(Graphics2D g2D){}
+
+    public void onDraw(){
+
+    }
+
     public void onProcess(){
 
     }
 
     public void addChild(Node child) {
+        child.owner = this;
         children.add(child);
     }
 
