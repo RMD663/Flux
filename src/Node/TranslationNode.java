@@ -1,3 +1,6 @@
+import Utils.Vector2;
+
+package Node;
 public class TranslationNode extends Node {
     public Vector2 globalPosition;
 

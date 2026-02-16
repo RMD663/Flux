@@ -1,16 +1,20 @@
+package CoreRender;
 import javax.swing.JPanel;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.*;
 import java.util.Vector;
+
+import Node.Node;
 
 public class RenderPanel extends JPanel  {
 
-    Vector<Node> nodes = new Vector<>();
+    Node window;
 
-    RenderPanel() {
+    public RenderPanel(Node root){
+        window = new Node();
+        window.addChild(root);
     }
 
     RenderPanel(int width, int height) {
@@ -29,17 +33,7 @@ public class RenderPanel extends JPanel  {
     }
 
     public void draw(Graphics2D g){
-        for (Node n : nodes) {
-            n._draw(g);
-        }
-    }
-
-    public void addNode(Node n){
-        nodes.add(n);
-    }
-
-    public void removeNode(Node n){
-        nodes.remove(n);
+        window._draw(g);
     }
 
 }

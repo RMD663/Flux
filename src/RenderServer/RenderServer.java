@@ -1,3 +1,6 @@
+package RenderServer;
+import Node.Shape;
+
 public interface RenderServer {
     void draw();
     void clear();

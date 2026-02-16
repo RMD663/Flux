@@ -1,7 +1,13 @@
+package Main;
+import Node.Node;
+import Node.NodeServer;
+import Node.RectNode;
+import Node.TranslationNode;
+import Utils.Vector2;
+
 public class Main {
     public static void main(String[] args) throws Exception {
 
-        CoreRender cRender = new CoreRender("main", 1280, 720);
         NodeServer ns = new NodeServer();
         Node root =  new Node();
         
@@ -12,17 +18,11 @@ public class Main {
         ns.addToTree(root);
 
         RectNode sqr = new RectNode(new Vector2(100, 100), new Vector2(20, 20));
-        Rect sqr2 = new Rect(100, 100, 100, 100);
         root.addChild(sqr);
-        cRender.addDrawableNode(sqr);
         
         while (true) {
-            ns.processTree();
-            cRender.draw();            
+            ns.processTree();     
             Thread.sleep(16);
-            cRender.clear();
         }
-
-
     }
 }

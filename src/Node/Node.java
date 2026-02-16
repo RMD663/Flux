@@ -1,16 +1,19 @@
+package Node;
 import java.awt.Graphics2D;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class Node {
-    Vector<Node> children = new Vector<>();
+    ArrayList<Node> children = new ArrayList<>();
     String id;
     private boolean isActive = true;
+    
+    @SuppressWarnings("unused")
     private boolean isDrawable = false;
     public Node owner;
     enum NodeType {NODE, TRANSLATION, SPRITE}
     public NodeType type; 
     
-    Node(){
+    public Node(){
     }
 
     public final void _process(){
@@ -43,11 +46,11 @@ public class Node {
         children.remove(child);
     }
 
-    public Vector<Node> getChildren(boolean getInternal) {
+    public ArrayList<Node> getChildren(boolean getInternal) {
         if(!getInternal){
             return children;
         }  else {
-            Vector<Node> internalChildren = new Vector<>();
+            ArrayList<Node> internalChildren = new ArrayList<>();
             internalChildren = collectAllChildren(internalChildren);
             return internalChildren;
         }
@@ -55,7 +58,7 @@ public class Node {
 
     }
 
-    public Vector<Node> getChildren() {
+    public ArrayList<Node> getChildren() {
         return children;
     }
 
@@ -64,7 +67,7 @@ public class Node {
         return children.size() > 0 ? true : false;
     }
 
-    private Vector<Node> collectAllChildren(Vector<Node> list){
+    private ArrayList<Node> collectAllChildren(ArrayList<Node> list){
         for (Node node : children) {
             list.add(node);
             if(node.hasChildren()){

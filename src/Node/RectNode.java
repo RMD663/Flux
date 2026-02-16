@@ -1,4 +1,7 @@
+package Node;
 import java.awt.Graphics2D;
+
+import Utils.Vector2;
 
 public class RectNode extends Node{
     private Rect rect;

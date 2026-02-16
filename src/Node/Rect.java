@@ -1,3 +1,4 @@
+package Node;
 import java.awt.Graphics2D;
 
 public class Rect extends Shape {
