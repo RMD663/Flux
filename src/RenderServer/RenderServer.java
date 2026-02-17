@@ -1,10 +1,9 @@
 package RenderServer;
-import Node.Shape;
 
 public interface RenderServer {
-    void draw();
+    void draw(DrawQuery dq);
     void clear();
     void background();
-    //void background(Color c);
-    void drawShape(Shape s);
+    void background(FluxColor c);
+    void setColor(FluxColor c);
 }

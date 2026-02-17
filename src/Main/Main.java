@@ -1,8 +1,8 @@
 package Main;
-import Node.Node;
-import Node.NodeServer;
-import Node.RectNode;
-import Node.TranslationNode;
+import Nodes.Node;
+import Nodes.NodeServer;
+import Nodes.RectNode;
+import Nodes.TranslationNode;
 import Utils.Vector2;
 
 public class Main {

@@ -1,4 +1,4 @@
-package Node;
+package Nodes;
 import java.awt.Graphics2D;
 
 import Utils.Vector2;

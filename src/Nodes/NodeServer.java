@@ -1,4 +1,4 @@
-package Node;
+package Nodes;
 import java.util.Vector;
 
 public class NodeServer {
@@ -6,7 +6,7 @@ public class NodeServer {
     Vector<Node> nodes;
     Node tree;
 
-    NodeServer(){
+    public NodeServer(){
         tree = new Node();
     }
 
