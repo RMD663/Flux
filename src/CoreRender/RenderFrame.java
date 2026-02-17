@@ -17,7 +17,8 @@ public class RenderFrame extends JFrame{
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);        
-    }   
+
+    }
 
     public RenderPanel getRenderPanel(){
         return rp;
