@@ -14,6 +14,8 @@ public class NodeServer {
         tree._process();
     }
 
+    public void drawTree(){tree._draw();}
+
     public void addToTree(Node node){
         tree.addChild(node);
         

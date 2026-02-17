@@ -6,8 +6,9 @@ public class DrawQuery {
     public Vector2 position;
     public Vector2 scale;
     public int rotation;
+    public FluxColor color;
 
-    DrawQuery(Vector2 position, Vector2 scale, int rotation){
+    public DrawQuery(Vector2 position, Vector2 scale, int rotation){
         this.position = position;
         this.scale = scale;
         this.rotation = rotation;

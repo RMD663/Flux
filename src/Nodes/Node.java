@@ -1,5 +1,5 @@
 package Nodes;
-import java.awt.Graphics2D;
+
 import java.util.ArrayList;
 
 public class Node {
@@ -10,8 +10,6 @@ public class Node {
     @SuppressWarnings("unused")
     private boolean isDrawable = false;
     public Node owner;
-    enum NodeType {NODE, TRANSLATION, SPRITE}
-    public NodeType type; 
     
     public Node(){
     }
@@ -27,15 +25,16 @@ public class Node {
 
     }
 
-    public void _draw(Graphics2D g2D){}
-
-    public void onDraw(){
-
+    public void _draw(){
+        for(Node child : getChildren(true)){
+            child._draw();
+        }
+        if (isDrawable) onDraw();
     }
 
-    public void onProcess(){
+    public void onDraw(){}
 
-    }
+    public void onProcess(){}
 
     public void addChild(Node child) {
         child.owner = this;
@@ -54,8 +53,6 @@ public class Node {
             internalChildren = collectAllChildren(internalChildren);
             return internalChildren;
         }
-        
-
     }
 
     public ArrayList<Node> getChildren() {
