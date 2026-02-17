@@ -1,14 +1,11 @@
 package Main;
 import CoreRender.RenderFrame;
 import CoreRender.RenderPanel;
-import Nodes.Node;
-import Nodes.NodeServer;
-import Nodes.RectNode;
-import Nodes.TranslationNode;
+import Nodes.*;
 import RenderServer.DrawQuery;
-import RenderServer.FluxColor;
 import Utils.Vector2;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Main {
@@ -18,10 +15,6 @@ public class Main {
 
         NodeServer ns = new NodeServer();
         Node root =  new Node();
-        
-        TranslationNode trs = new TranslationNode(new Vector2());
-
-        root.addChild(trs);
 
         ns.addToTree(root);
 
@@ -31,25 +24,18 @@ public class Main {
         RenderPanel rp = rf.getRenderPanel();
         rp._init();
 
-        ArrayList<DrawQuery> dqs = new ArrayList<>();
+        DrawableNode rect = new DrawableNode(Vector2.ZERO);
+        TranslationNode translation = new TranslationNode(new Vector2(200, 200));
 
-        for(byte i = 0; i < 100; i++){
-            int scale = (int)(Math.random() * 100f);
-            DrawQuery dq = new DrawQuery(
-                    new Vector2((int)(Math.random() * rf.getWidth()), (int)(Math.random() * rf.getHeight())),
-                    new Vector2(scale, scale),
-                    0
-            );
-            dq.color = FluxColor.randomColor();
-            rp.draw(dq);
-        }
+        translation.addChild(rect);
 
-
+        root.addChild(translation);
 
         while (true) {
-            rp.render();
+            translation.setGlobalPosition(new Vector2(translation.getPosition().x + 1, translation.getPosition().y));
+            ns.processDeletionQueue();
             ns.processTree();
-            Thread.sleep(16);
+            rp.render();
         }
     }
 }

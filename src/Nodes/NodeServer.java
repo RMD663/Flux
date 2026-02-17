@@ -1,13 +1,15 @@
 package Nodes;
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class NodeServer {
-
+    ArrayList<Node> deletionQueue;
     Vector<Node> nodes;
     Node tree;
 
     public NodeServer(){
         tree = new Node();
+        deletionQueue = new ArrayList<>();
     }
 
     public void processTree(){
@@ -22,6 +24,10 @@ public class NodeServer {
     }
 
     public void removeFromTree(Node node){
-        tree.removeChild(node);
+        deletionQueue.add(node);
+    }
+
+    public void processDeletionQueue(){
+        deletionQueue.clear();
     }
 }

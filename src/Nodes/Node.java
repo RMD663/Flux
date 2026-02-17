@@ -1,22 +1,32 @@
 package Nodes;
 
+import RenderServer.DrawQuery;
+
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class Node {
     ArrayList<Node> children = new ArrayList<>();
     String id;
     private boolean isActive = true;
-    
-    @SuppressWarnings("unused")
+    private DrawQuery drawQuery;
     private boolean isDrawable = false;
-    public Node owner;
+    private Node owner;
     
     public Node(){
+        drawQuery = new DrawQuery();
     }
 
-    public final void _process(){
-        if (!isActive) return;
 
+    public void _ready(){
+        for(Node node : getChildren(true)){
+            node.onReady();
+        }
+        this.onReady();
+    }
+
+    public void _process(){
+        if (!isActive) return;
 
         this.onProcess();
         for (Node node : children) {
@@ -30,8 +40,10 @@ public class Node {
             child._draw();
         }
         if (isDrawable) onDraw();
+
     }
 
+    public void onReady(){}
     public void onDraw(){}
 
     public void onProcess(){}
@@ -59,6 +71,10 @@ public class Node {
         return children;
     }
 
+    public Node getOwner(){
+        return owner;
+    }
+
 
     public boolean hasChildren() {
         return children.size() > 0 ? true : false;
@@ -73,4 +89,30 @@ public class Node {
         }
         return list;
     }
+
+    public boolean isDrawable(){
+        return isDrawable;
+    }
+
+    public void show(){
+        this.isDrawable = true;
+    }
+
+    public void hide(){
+        this.isDrawable = false;
+    }
+
+    public boolean isActive(){
+        return isActive;
+    }
+
+    public void disable(){
+        this.isActive = false;
+    }
+
+    public void enable(){
+        this.isActive = true;
+    }
+
+
 }

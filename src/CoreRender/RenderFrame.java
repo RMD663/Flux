@@ -1,16 +1,15 @@
 package CoreRender;
-import RenderServer.FluxColor;
 import Utils.Vector2;
 
-import java.awt.Dimension;
 import javax.swing.JFrame;
+import java.awt.*;
 
 public class RenderFrame extends JFrame{
 
     private final RenderPanel rp;
 
     public RenderFrame(String win_title, int width, int height){
-        rp = new RenderPanel(new Vector2(width, height), FluxColor.randomColor(), true);
+        rp = new RenderPanel(new Vector2(width, height), Color.LIGHT_GRAY, true);
         this.add(rp);
         this.setTitle(win_title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
