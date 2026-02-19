@@ -32,10 +32,14 @@ public class Main {
         root.addChild(translation);
 
         while (true) {
-            translation.setGlobalPosition(new Vector2(translation.getPosition().x + 1, translation.getPosition().y));
             ns.processDeletionQueue();
+            ns.drawTree();
             ns.processTree();
             rp.render();
+            for (DrawQuery dq : ns.getDrawQueries()) {
+                System.out.println(dq);
+                rp.draw(dq);
+            }
         }
     }
 }

@@ -47,6 +47,8 @@ public class RenderPanel extends Canvas implements RenderServer {
                 for (DrawQuery dq : drawCalls){
                     g.setColor(dq.color);
                     g.fillRect(dq.position.x, dq.position.y, dq.scale.x, dq.scale.y);
+//                    if (dq.sprite){
+//                    }
                 }
                 // drawQueue - ends
 

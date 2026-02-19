@@ -12,7 +12,7 @@ public class Node {
     private DrawQuery drawQuery;
     private boolean isDrawable = false;
     private Node owner;
-    
+    private boolean isInDeletionQueue = false;
     public Node(){
         drawQuery = new DrawQuery();
     }
@@ -25,6 +25,13 @@ public class Node {
         this.onReady();
     }
 
+    public void _processDeletion(){
+        for (Node child : children){
+            if(child.isInDeletionQueue){
+                this.removeChild(child);
+            }
+        }
+    }
     public void _process(){
         if (!isActive) return;
 

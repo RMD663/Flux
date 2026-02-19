@@ -14,7 +14,4 @@ public class RectNode extends Node{
         this.scale = scale;
     }
 
-    public void _draw(Graphics2D g2D){
-        g2D.drawRect(rect.position.x, rect.position.y, scale.x, scale.y);
-    }
 }
